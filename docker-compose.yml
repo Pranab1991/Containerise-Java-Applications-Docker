@@ -1,0 +1,27 @@
+version: "3.7"
+
+services: 
+    mysqldb:
+        image: mysql
+        networks: 
+            - customnet
+        environment: 
+            - MYSQL_DATABASE=bootdb
+            - MYSQL_PASSWORD=root
+            - MYSQL_ROOT_PASSWORD=root
+        volumes: 
+            - customevol:/var/lib/mysql
+    myapp: 
+        build: 
+            context: .
+        image: readybootapp
+        networks: 
+            - customnet
+        ports: 
+            - "8080:8080"
+        depends_on: 
+            - mysqldb
+volumes: 
+    customevol:
+networks: 
+    customnet: 

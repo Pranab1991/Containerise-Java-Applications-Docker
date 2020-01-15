@@ -1,0 +1,8 @@
+docker container run --name mysql --network my-net -e MYSQL_DATABASE=mysql -e MYSQL_USER=test -e MYSQL_PASSWORD=test -e MYSQL_ROOT_PASSWORD=test mysql
+
+docker container run --name mysqldb -d --network my-net -e MYSQL_DATABASE=bootdb -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root mysql
+
+docker container run --name myapp --rm --network my-net -p "8080:8080" readybootapp
+
+docker swarm join --token SWMTKN-1-1dtk9jmm2b6xltd4dwm4bkthf9khxjap5d5r50hb9cya6dymm2-4sci82qx19936xi23y8qdwwib 192.168.0.3:2377
+
